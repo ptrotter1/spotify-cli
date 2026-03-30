@@ -1,0 +1,9 @@
+# Binary
+spotify-cli
+
+# Go build cache
+*.test
+*.out
+
+# Credentials — never commit tokens
+tokens.json
