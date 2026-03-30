@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"runtime/debug"
 	"net/http"
 	"net/url"
 	"os"
@@ -20,7 +21,6 @@ import (
 )
 
 const (
-	version         = "1.0.1"
 	redirectURI     = "http://127.0.0.1:8888/callback"
 	scopes          = "user-read-playback-state user-modify-playback-state user-read-currently-playing"
 	spotifyAuthURL  = "https://accounts.spotify.com/authorize"
@@ -622,7 +622,11 @@ func main() {
 	}
 
 	if cmd == "version" || cmd == "--version" || cmd == "-v" {
-		fmt.Println("spotify-cli v" + version)
+		v := "dev"
+		if info, ok := debug.ReadBuildInfo(); ok && info.Main.Version != "" {
+			v = info.Main.Version
+		}
+		fmt.Println("spotify-cli " + v)
 		return
 	}
 
