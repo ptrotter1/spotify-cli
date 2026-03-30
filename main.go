@@ -20,6 +20,7 @@ import (
 )
 
 const (
+	version         = "1.0.1"
 	redirectURI     = "http://127.0.0.1:8888/callback"
 	scopes          = "user-read-playback-state user-modify-playback-state user-read-currently-playing"
 	spotifyAuthURL  = "https://accounts.spotify.com/authorize"
@@ -560,6 +561,7 @@ USAGE
 
 COMMANDS
   auth              Authenticate with Spotify (run this first)
+  version           Show version
   status            Show currently playing track
   play [uri]        Resume playback, or play a Spotify URI
   pause             Pause playback
@@ -616,6 +618,11 @@ func main() {
 
 	if cmd == "help" || cmd == "--help" || cmd == "-h" {
 		usage()
+		return
+	}
+
+	if cmd == "version" || cmd == "--version" || cmd == "-v" {
+		fmt.Println("spotify-cli v" + version)
 		return
 	}
 
