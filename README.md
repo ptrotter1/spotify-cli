@@ -18,7 +18,7 @@ This places the `spotify-cli` binary in your `$GOPATH/bin` (or `$GOBIN`). Make s
 
 1. Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
 2. Click **Create app**
-3. Under **Redirect URIs**, add: `http://localhost:8888/callback`
+3. Under **Redirect URIs**, add: `http://127.0.0.1:8888/callback`
 4. Save
 
 ### 2. Set environment variables

@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	redirectURI     = "http://localhost:8888/callback"
+	redirectURI     = "http://127.0.0.1:8888/callback"
 	scopes          = "user-read-playback-state user-modify-playback-state user-read-currently-playing"
 	spotifyAuthURL  = "https://accounts.spotify.com/authorize"
 	spotifyTokenURL = "https://accounts.spotify.com/api/token"
@@ -120,7 +120,7 @@ func openBrowser(u string) {
 }
 
 func captureCallback(expectedState string) (string, error) {
-	ln, err := net.Listen("tcp", ":8888")
+	ln, err := net.Listen("tcp", "127.0.0.1:8888")
 	if err != nil {
 		return "", fmt.Errorf("cannot listen on :8888 (is it in use?): %w", err)
 	}
@@ -572,7 +572,7 @@ COMMANDS
 
 SETUP
   1. Create a Spotify app at https://developer.spotify.com/dashboard
-  2. Add  http://localhost:8888/callback  as a Redirect URI in your app settings
+  2. Add  http://127.0.0.1:8888/callback  as a Redirect URI in your app settings
   3. Export your credentials:
        export SPOTIFY_CLIENT_ID=<your_client_id>
        export SPOTIFY_CLIENT_SECRET=<your_client_secret>
