@@ -86,6 +86,24 @@ spotify-cli switch
 spotify-cli switch "living room"
 ```
 
+## Releasing a new version
+
+The binary reports whichever git tag it was built from — there's no version constant to update manually.
+
+1. Commit all changes to `main`
+2. Tag the release following [semver](https://semver.org/):
+   - `v1.0.x` — bug fix
+   - `v1.x.0` — new feature (backwards compatible)
+   - `vx.0.0` — breaking change
+3. Push the tag:
+
+```bash
+git tag v1.2.3
+git push origin v1.2.3
+```
+
+Users will get the new version on their next `go install github.com/ptrotter1/spotify-cli@latest`.
+
 ## How it works
 
 Authentication uses the [OAuth 2.0 Authorization Code flow](https://developer.spotify.com/documentation/web-api/tutorials/code-flow). On first run, `spotify-cli auth` opens a browser, starts a temporary local server on port 8888 to capture the callback, exchanges the authorization code for tokens, and saves them locally. Subsequent commands refresh the access token automatically when it expires.
