@@ -47,6 +47,7 @@ spotify-cli <command> [args]
 | Command | Description |
 |---|---|
 | `auth` | Authenticate with Spotify |
+| `version` | Show installed version |
 | `status` | Show currently playing track |
 | `play [uri]` | Resume playback, or play a Spotify URI |
 | `pause` | Pause playback |
